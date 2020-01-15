@@ -10,5 +10,3 @@ const load = async fullname => {
 }
 
 module.exports = load;
-
-// dionmabuza25@gmail.com
