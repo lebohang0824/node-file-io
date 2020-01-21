@@ -1,5 +1,4 @@
 const fs = require('fs');
-const load = require('./load');
 
 class Visitor {
 
@@ -13,10 +12,13 @@ class Visitor {
 	}
 
 	save() {		
-		let file = this.fullname.replace(' ', '_').toLowerCase();
-		fs.writeFile(`visitor_${file}.json`, JSON.stringify(this), err => {
-			if (err) throw err;
-		});
+		let name = this.fullname.replace(' ', '_').toLowerCase();
+
+		let err = fs.writeFileSync(__dirname+ `/visitor_${name}.json`, JSON.stringify(this));
+
+		if (err) throw err;
+		
+		return this;
 	}
 
 }

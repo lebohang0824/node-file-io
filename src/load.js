@@ -1,12 +1,12 @@
 const fs = require('fs');
 
-const load = async fullname => {
-	let file = fullname.replace(' ', '_').toLowerCase();
+const load = fullname => {
+	
+	let name = fullname.replace(' ', '_').toLowerCase();
 
-	await fs.readFile(`visitor_${file}.json`, (err, data) => {
-		if (err) throw err;
-		console.log(data.toString());
-	});
-}
+	let data = fs.readFileSync(__dirname+ `/visitor_${name}.json`, 'utf8');
+
+	return data;
+}	
 
 module.exports = load;
